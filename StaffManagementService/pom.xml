@@ -7,4 +7,21 @@
   </parent>
   <artifactId>StaffManagementService</artifactId>
   <name>StaffManagementService</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.mindtree.coe</groupId>
+  		<artifactId>StaffManagementDao</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.mindtree.coe</groupId>
+  		<artifactId>StaffManagementModel</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.mindtree.coe</groupId>
+  		<artifactId>StaffManagementInterface</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>
