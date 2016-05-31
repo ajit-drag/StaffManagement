@@ -68,4 +68,81 @@ public class DaoImpl extends DBConnection implements Dao {
 		return memberList;
 	}
 
+	@Override
+	public Member memberExist(String mid) throws DaoException {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		Member member=null;
+		try {
+			tx = session.beginTransaction();
+			Query query  = session.createQuery("From Member m where m.mid=:mid");
+			query.setParameter("mid", mid);
+			member = (Member) query.uniqueResult();
+			tx.commit();
+		} catch (HibernateException hibernateException) {
+			if (tx != null)
+				tx.rollback();
+			throw new DaoException("Some error related to database connection.", hibernateException);
+		}finally {
+			session.close();
+		}
+		return member;
+	}
+
+	@Override
+	public Member createOrUpdate(Member member) throws DaoException {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		Member updatedMember = null;
+		try {
+			
+			Member existingMember =memberExist(member.getMid());
+			if(existingMember!= null){
+				//means record already exist. Copy All data of member to existing member.
+				tx = session.beginTransaction();
+				long id = existingMember.getId();
+				existingMember = member;
+				existingMember.setId(id);
+				System.out.println("Updated Record: "+existingMember);
+				updatedMember=(Member) session.merge(existingMember);
+				tx.commit();		
+			}else{
+				tx = session.beginTransaction();
+				long id = (long) session.save(member);
+				updatedMember = session.load(Member.class, id);
+				System.out.println("New Record: "+updatedMember);
+				tx.commit();		
+			}
+		
+		} catch (HibernateException hibernateException) {
+			if (tx != null)
+				tx.rollback();
+			throw new DaoException("Some error related to database connection.", hibernateException);
+		}finally {
+			session.close();
+		}
+		return updatedMember;
+	}
+
+	@Override
+	public void deleteMember(String mid) throws DaoException {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		Member deletedMember=null;
+		try{
+			tx = session.beginTransaction();
+			Query query  = session.createQuery("From Member m where m.mid=:mid");
+			query.setParameter("mid", mid);
+			deletedMember = (Member) query.uniqueResult();
+			session.delete(deletedMember);
+			tx.commit();		
+		} catch (HibernateException hibernateException) {
+			if (tx != null)
+				tx.rollback();
+			throw new DaoException("Some error related to database connection.", hibernateException);
+		}finally {
+			session.close();
+		}
+	}
+
 }

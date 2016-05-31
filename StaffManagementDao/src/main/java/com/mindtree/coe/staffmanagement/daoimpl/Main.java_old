@@ -1,0 +1,33 @@
+package com.mindtree.coe.staffmanagement.daoimpl;
+
+import org.hibernate.Session;
+
+import com.mindtree.coe.staffmanagement.entity.Competency;
+import com.mindtree.coe.staffmanagement.entity.Gender;
+import com.mindtree.coe.staffmanagement.entity.Member;
+import com.mindtree.coe.staffmanagement.entity.MemberType;
+
+public class Main{
+	/*
+	//This class will bootstrap the database design.
+
+	public static void main(String[] args) {
+		Main mainClass = new Main();
+		Session session = mainClass.getSessionFactory().openSession();
+		//adding a member
+		Member member = new Member();
+		member.setMid("M1013430");
+		member.setName("Baldwin Sampson");
+		member.setGender(Gender.Male);
+		member.setCompetency(Competency.C3);
+		member.setAge(27);
+		member.setMemberType(MemberType.Employee);
+		
+		long id = (long) session.save(member);
+		System.out.println("Member added to id "+id);
+		session.flush();
+		session.close();
+
+	}*/
+
+}

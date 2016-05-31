@@ -114,4 +114,11 @@ public class Member {
 		this.age = age;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", mid=" + mid + ", name=" + name + ", gender=" + gender + ", memberType="
+				+ memberType + ", competency=" + competency + ", age=" + age + "]";
+	}
+	
 }

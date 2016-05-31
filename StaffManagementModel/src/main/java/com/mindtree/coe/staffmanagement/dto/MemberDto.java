@@ -83,4 +83,10 @@ public class MemberDto {
 		this.memberType = memberType;
 	}
 
+	@Override
+	public String toString() {
+		return "Member: [mid=" + mid + ", name=" + name + ", gender=" + gender + ", competency=" + competency
+				+ ", age=" + age + ", memberType=" + memberType + "]";
+	}
+
 }

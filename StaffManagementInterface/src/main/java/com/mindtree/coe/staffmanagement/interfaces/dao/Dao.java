@@ -10,4 +10,9 @@ public interface Dao {
 	
 	public List<Member> getAllMembers() throws DaoException;
 	public List<Member> getMemberTypeWise(MemberType memberType) throws DaoException;
+	
+	public Member memberExist(String mid)throws DaoException;
+	public Member createOrUpdate(Member member) throws DaoException;
+	
+	public void deleteMember(String mid) throws DaoException;
 }

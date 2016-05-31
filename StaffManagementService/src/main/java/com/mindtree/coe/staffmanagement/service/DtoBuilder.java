@@ -36,5 +36,17 @@ public class DtoBuilder {
 		}
 		
 	}
+	
+	public Member getMember(MemberDto memberDto){
+		Member member = new Member();
+		member.setName(memberDto.getName());
+		member.setAge(memberDto.getAge());
+		member.setCompetency(memberDto.getCompetency());
+		member.setGender(memberDto.getGender());
+		member.setMemberType(memberDto.getMemberType());
+		member.setMid(memberDto.getMid());
+		return member;
+		
+	}
 
 }
